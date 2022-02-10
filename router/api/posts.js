@@ -51,10 +51,10 @@ router.put("/", async (req,res)=> {
     }
 });
 
-router.delete("/", async (req,res)=> {
+router.delete("/:id", async (req,res)=> {
     try{
         let posts = await Post.findByIdAndRemove(req.params.id);
-        console.log(posts);
+        console.log(req.params.id);
         if(!posts){
             return res.status(400).json({ errors: "No data found" });
         }
